@@ -65,11 +65,11 @@
     </div>
   </div>
                     <div id="marker-nav">
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = 0);' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = (markerNum - 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = Math.floor(Math.random() * upperbound) + 1);'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = (markerNum + 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = upperbound - 1);' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToStart()' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToPrevious()' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToRandom()'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToNext()' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToEnd()' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
                     </div>
                     <div id="post-header">
                         <div id="post-header-img"></div>
@@ -144,81 +144,104 @@ window.onload = placeMap();
 //loads map to location of hash mark
 window.onload = setTimeout(function(){loadHash(window.location.hash.substring(1)); }, 900);
         
-        function loadHash() {
-            if (window.location.hash.substring(1) >= 1) {
-                markerNum = window.location.hash.substring(1);
-                callMarker(markerNum); }
-            }
-    
-            // Opens marker from sidebar link
-        function callMarker(markerNum) {
-                
-           displayInfo(); 
-        }
+function loadHash() {
+    if (window.location.hash.substring(1) >= 1) {
+        markerNum = parseInt(window.location.hash.substring(1));
+        callMarker(markerNum); 
+    }
+}
 
-        function displayInfo() {
-            sql = new cartodb.SQL({ user: 'booma' });
-			sql_query = "SELECT * FROM daily_spots WHERE booma_id = " + markerNum;
-			sql.execute(sql_query)
-			.done(function(data) {
-				console.log(data.rows[0]);
-                
-                window.location.hash = markerNum;
-                
-                // Zooms to location when clicked
-                var lat = data.rows[0].latitude;
-                var long = data.rows[0].longitude;
-                var zoomHeight = data.rows[0].zoom_height;
-                map.panTo([lat, long]);
-                setTimeout(function(){map.setZoom(zoomHeight); }, 900);
-                
-                var title = data.rows[0].title;
-                var pub_date = data.rows[0].date;
-                var auth_name = data.rows[0].auth_name;
-				var image = data.rows[0].image;
-                var image_cap = data.rows[0].image_cap;
-                var quote = data.rows[0].quote;
-                var text_desc = data.rows[0].text_desc;
-                var real_world_desc = data.rows[0].real_world_desc;
-                var book_amazon_cover = data.rows[0].book_amazon_cover;
-                var book_amazon = data.rows[0].book_amazon;
-                var book_worldcat = data.rows[0].book_worldcat;
-                var quote_cit = data.rows[0].quote_cit;
-                var auth_bio = data.rows[0].auth_bio;
-                var link = data.rows[0].link;
-				
-				// Displays the ID of the object in the external information box
-				document.getElementById("post-header-img").innerHTML= book_amazon_cover;
-                document.getElementById("title").innerHTML= title;
-                document.getElementById("pub-date").innerHTML= pub_date;
-                document.getElementById("auth-name").innerHTML= auth_name;
-                document.getElementById("book_amazon").innerHTML="( <a href=" + book_amazon + " target='_blank'>Amazon</a> | ";
-                document.getElementById("book_worldcat").innerHTML="<a href=" + book_worldcat + " target='_blank'>Library</a> )";
-                document.getElementById("image").innerHTML= "<img src=" + image + " width=100%>";
-                document.getElementById("image-cap").innerHTML= image_cap; //change to caption
-                document.getElementById("quote").innerHTML= quote;
-                document.getElementById("text-desc").innerHTML= text_desc;
-                document.getElementById("real-world-desc").innerHTML= real_world_desc;
-                document.getElementById("quote-cit").innerHTML= quote_cit;
-                document.getElementById("auth-bio").innerHTML= auth_bio;
-                document.getElementById("link").innerHTML= "<p><a href=" + link + " target='_blank'>Read the article</a>";
-                
-                
-                //changeMarker(); //Test to call a function here.  Function call works, but have not been able to make it change the marker.
-            })
-            
-            .error(function(errors) {
-			//***errors contains a list of errors
-			console.log("errors:" + errors);
-			})
-            
-        }
+// Opens marker from sidebar link
+function callMarker() {
+    displayInfo(markerNum); 
+}
+
+function displayInfo() {
+    sql = new cartodb.SQL({ user: 'booma' });
+	sql_query = "SELECT * FROM daily_spots WHERE booma_id = " + markerNum;
+	sql.execute(sql_query)
+	.done(function(data) {
+		console.log(data.rows[0]);
         
-         //function changeMarker() {
-           // alert("Hi " + markerNum); 
-         //}
-                    
-                        
+        window.location.hash = markerNum;
+        
+        // Zooms to location when clicked
+        var lat = data.rows[0].latitude;
+        var long = data.rows[0].longitude;
+        var zoomHeight = data.rows[0].zoom_height;
+        map.panTo([lat, long]);
+        setTimeout(function(){map.setZoom(zoomHeight); }, 900);
+        
+        var title = data.rows[0].title;
+        var pub_date = data.rows[0].date;
+        var auth_name = data.rows[0].auth_name;
+		var image = data.rows[0].image;
+        var image_cap = data.rows[0].image_cap;
+        var quote = data.rows[0].quote;
+        var text_desc = data.rows[0].text_desc;
+        var real_world_desc = data.rows[0].real_world_desc;
+        var book_amazon_cover = data.rows[0].book_amazon_cover;
+        var book_amazon = data.rows[0].book_amazon;
+        var book_worldcat = data.rows[0].book_worldcat;
+        var quote_cit = data.rows[0].quote_cit;
+        var auth_bio = data.rows[0].auth_bio;
+        var link = data.rows[0].link;
+		
+		// Displays the ID of the object in the external information box
+		document.getElementById("post-header-img").innerHTML= book_amazon_cover;
+        document.getElementById("title").innerHTML= title;
+        document.getElementById("pub-date").innerHTML= pub_date;
+        document.getElementById("auth-name").innerHTML= auth_name;
+        document.getElementById("book_amazon").innerHTML="( <a href=" + book_amazon + " target='_blank'>Amazon</a> | ";
+        document.getElementById("book_worldcat").innerHTML="<a href=" + book_worldcat + " target='_blank'>Library</a> )";
+        document.getElementById("image").innerHTML= "<img src=" + image + " width=100%>";
+        document.getElementById("image-cap").innerHTML= image_cap; //change to caption
+        document.getElementById("quote").innerHTML= quote;
+        document.getElementById("text-desc").innerHTML= text_desc;
+        document.getElementById("real-world-desc").innerHTML= real_world_desc;
+        document.getElementById("quote-cit").innerHTML= quote_cit;
+        document.getElementById("auth-bio").innerHTML= auth_bio;
+        document.getElementById("link").innerHTML= "<p><a href=" + link + " target='_blank'>Read the article</a>";
+        
+        
+        //changeMarker(); //Test to call a function here.  Function call works, but have not been able to make it change the marker.
+    })
+    
+    .error(function(errors) {
+    	//***errors contains a list of errors
+    	console.log("errors:" + errors);
+	})
+}
+
+ //function changeMarker() {
+   // alert("Hi " + markerNum); 
+ //}
+
+function goToStart () {
+    markerNum = 0;
+    callMarker();
+}
+
+function goToPrevious () {
+    markerNum = (markerNum - 1 + upperbound) % upperbound;
+    callMarker();
+}
+
+function goToRandom () {
+    markerNum = Math.floor(Math.random() * upperbound) + 1;
+    callMarker();
+}
+
+function goToNext () {
+    markerNum = (markerNum + 1 + upperbound) % upperbound;
+    callMarker();
+}
+
+function goToEnd () {
+    markerNum = upperbound - 1;
+    callMarker();
+}
+               
         </script>
     </body>
 </html>
