@@ -65,11 +65,11 @@
     </div>
   </div>
                     <div id="marker-nav">
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = 0);' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = (markerNum - 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = Math.floor(Math.random() * upperbound) + 1);'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = (markerNum + 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='callMarker(markerNum = upperbound - 1);' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToStart()' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToPrevious()' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToRandom()'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToNext()' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-sm" href="#" onClick='goToEnd()' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
                     </div>
                     <div id="post-header">
                         <div id="post-header-img"></div>
@@ -144,17 +144,12 @@ window.onload = placeMap();
 //loads map to location of hash mark
 window.onload = setTimeout(function(){loadHash(window.location.hash.substring(1)); }, 900);
         
-        function loadHash() {
-            if (window.location.hash.substring(1) >= 1) {
-                markerNum = window.location.hash.substring(1);
-                callMarker(markerNum); }
-            }
-    
-            // Opens marker from sidebar link
-        function callMarker(markerNum) {
-                
-           displayInfo(); 
-        }
+function loadHash() {
+    if (window.location.hash.substring(1) >= 1) {
+        markerNum = parseInt(window.location.hash.substring(1));
+        callMarker(markerNum); 
+    }
+}
 
         function displayInfo() {
             sql = new cartodb.SQL({ user: 'booma' });
@@ -217,8 +212,32 @@ window.onload = setTimeout(function(){loadHash(window.location.hash.substring(1)
          //function changeMarker() {
            // alert("Hi " + markerNum); 
          //}
-                    
-                        
+
+        function goToStart () {
+            pageMarkerNum = 0;
+            callMarker();
+        }
+
+        function goToPrevious () {
+            pageMarkerNum = (pageMarkerNum - 1 + upperbound) % upperbound;
+            callMarker();
+        }
+
+        function goToRandom () {
+            pageMarkerNum = Math.floor(Math.random() * upperbound) + 1;
+            callMarker();
+        }
+
+        function goToNext () {
+            pageMarkerNum = (pageMarkerNum + 1 + upperbound) % upperbound;
+            callMarker();
+        }
+
+        function goToEnd () {
+            pageMarkerNum = upperbound;
+            callMarker();
+        }
+               
         </script>
     </body>
 </html>
