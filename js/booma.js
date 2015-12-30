@@ -63,46 +63,35 @@ function displayInfo() {
     sql.execute(sql_query)
     .done(function(data) {
         console.log(data.rows[0]);
-        
+
+        var record = data.rows[0];
+
         window.location.hash = markerNum;
-        
+
         // Zooms to location when clicked
-        var lat = data.rows[0].latitude;
-        var long = data.rows[0].longitude;
-        var zoomHeight = data.rows[0].zoom_height;
-        map.panTo([lat, long]);
-        setTimeout(function(){map.setZoom(zoomHeight); }, 900);
-        
-        var title = data.rows[0].title;
-        var pub_date = data.rows[0].date;
-        var auth_name = data.rows[0].auth_name;
-        var image = data.rows[0].image;
-        var image_cap = data.rows[0].image_cap;
-        var quote = data.rows[0].quote;
-        var text_desc = data.rows[0].text_desc;
-        var real_world_desc = data.rows[0].real_world_desc;
-        var book_amazon_cover = data.rows[0].book_amazon_cover;
-        var book_amazon = data.rows[0].book_amazon;
-        var book_worldcat = data.rows[0].book_worldcat;
-        var quote_cit = data.rows[0].quote_cit;
-        var auth_bio = data.rows[0].auth_bio;
-        var link = data.rows[0].link;
-        
+        map.panTo([record.latitude, record.longitude]);
+
+        setTimeout(function () {
+            map.setZoom(record.zoom_height);
+        }, 900);
+
         // Displays the ID of the object in the external information box
-        document.getElementById("post-header-img").innerHTML= book_amazon_cover;
-        document.getElementById("title").innerHTML= title;
-        document.getElementById("pub-date").innerHTML= pub_date;
-        document.getElementById("auth-name").innerHTML= auth_name;
-        document.getElementById("book_amazon").innerHTML="( <a href=" + book_amazon + " target='_blank'>Amazon</a> | ";
-        document.getElementById("book_worldcat").innerHTML="<a href=" + book_worldcat + " target='_blank'>Library</a> )";
-        document.getElementById("image").innerHTML= "<img src=" + image + " width=100%>";
-        document.getElementById("image-cap").innerHTML= image_cap; //change to caption
-        document.getElementById("quote").innerHTML= quote;
-        document.getElementById("text-desc").innerHTML= text_desc;
-        document.getElementById("real-world-desc").innerHTML= real_world_desc;
-        document.getElementById("quote-cit").innerHTML= quote_cit;
-        document.getElementById("auth-bio").innerHTML= auth_bio;
-        document.getElementById("link").innerHTML= "<p><a href=" + link + " target='_blank'>Read the article</a>";
+        // TODO: Simplify this section with a templating engine.
+        document.getElementById("post-header-img").innerHTML = record.book_amazon_cover;
+        document.getElementById("title").innerHTML = record.title;
+        document.getElementById("pub-date").innerHTML = record.pub_date;
+        document.getElementById("auth-name").innerHTML = record.auth_name;
+        document.getElementById("book_amazon").innerHTML = "( <a href=\"" + record.book_amazon + "\" target=\"_blank\">Amazon</a> | ";
+        document.getElementById("book_worldcat").innerHTML = "<a href=\"" + record.book_worldcat + "\" target=\"_blank\">Library</a> )";
+        document.getElementById("image").innerHTML = "<img src=\"" + record.image + "\" width=\"100%\">";
+        document.getElementById("image-cap").innerHTML = record.image_cap; // change to caption
+        document.getElementById("quote").innerHTML = record.quote;
+        document.getElementById("text-desc").innerHTML = record.text_desc;
+        document.getElementById("real-world-desc").innerHTML = record.real_world_desc;
+        document.getElementById("quote-cit").innerHTML = record.quote_cit;
+        document.getElementById("auth-bio").innerHTML = record.auth_bio;
+
+        // document.getElementById("link").innerHTML = "<p><a href=\"" + record.link + "\" target=\"_blank\">Read the article</a>";
     })
     
     .error(function(errors) {
