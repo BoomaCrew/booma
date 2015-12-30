@@ -11,6 +11,8 @@
         
     </head>
     <body>
+
+        <!-- Begin Header Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -39,15 +41,22 @@
                 </div>
             </div>
         </nav>
+        <!-- End Header Navigation -->
+
         <a id="refresh" class="btn btn-refresh" href="#" onClick="map.setZoom(2)" role="button"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
         
         <div class="container-fluid">
             <div class="row">
+
+                <!-- Begin Map Container -->
                 <div class="col-sm-8 pull-right stacked-top">
                     <div id="map"></div>
                 </div>
+                <!-- End Map Container -->
+
                 <div class="col-sm-4 pull-left stacked-bottom">
-                <div id="marker-nav">
+
+                    <div id="marker-nav">
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToStart()' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToPrevious()' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToRandom()'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
@@ -74,6 +83,7 @@
   </div>
   -->
                    
+                    <!-- Begin Side Info -->
                     <div id="post-header">
                         <div id="post-header-img"></div>
                         <div id="post-header-text">
@@ -83,15 +93,16 @@
                             <div><p><span id="book_amazon"></span><span id="book_worldcat"></span></p></div>
                         </div>    
                     </div>
+
                     <div id="image"></div>
-                        <div id="image-cap" class="caption caption-map"></div>
+                    <div id="image-cap" class="caption caption-map"></div>
                     <div id="quote"></div>
                     <div id="text-desc"></div>
                     <div id="real-world-desc"></div>
                     <div id="find-book"></div>
                     <div id="quote-cit"></div>
                     <div id="auth-bio"></div>
-                    <!-- <div id="link"></div> -->
+                    <!-- End Side Info -->
                 </div>
             </div>
         </div>
