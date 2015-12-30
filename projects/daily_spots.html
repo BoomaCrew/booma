@@ -11,6 +11,8 @@
         
     </head>
     <body>
+
+        <!-- Begin Header Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -39,41 +41,30 @@
                 </div>
             </div>
         </nav>
+        <!-- End Header Navigation -->
+
         <a id="refresh" class="btn btn-refresh" href="#" onClick="map.setZoom(2)" role="button"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
         
         <div class="container-fluid">
             <div class="row">
+
+                <!-- Begin Map Container -->
                 <div class="col-sm-8 pull-right stacked-top">
                     <div id="map"></div>
                 </div>
+                <!-- End Map Container -->
+
                 <div class="col-sm-4 pull-left stacked-bottom">
-                <div id="marker-nav">
+
+                    <div id="marker-nav">
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToStart()' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToPrevious()' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToRandom()'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToNext()' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
                         <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='goToEnd()' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
                     </div>
-                    <!--
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#overview" aria-expanded="true" aria-controls="collapseOne">
-          Daily Spots Overview <b class="caret"></b>
-                                    </a>
-                                </h4>
-                            </div>
-    <div id="overview" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <p>In the early days of Booma, the Daily Spot was created as a way to explore individual locations from novels, poems, and non-fiction works.  Each of the 80+ points on the map were contributed to The Bookmapping Project beginning in the summer of 2014.</p>
-          <p>To read about one of the locations, click a point on the map or use the navigation buttons below.  You can return to a wide view of the map at anytime by clicking the refresh button in the upper right corner.</p>
-          <p>As we move toward creating projects with more depth that focus on individual works and locations, the Daily Spots have become less "daily," but if you would like to contribute, send us an <a href="mailto:booma+dailyspots@booma.us">email</a>.</p>
-      </div>
-    </div>
-  </div>
-  -->
                    
+                    <!-- Begin Side Info -->
                     <div id="post-header">
                         <div id="post-header-img"></div>
                         <div id="post-header-text">
@@ -83,168 +74,24 @@
                             <div><p><span id="book_amazon"></span><span id="book_worldcat"></span></p></div>
                         </div>    
                     </div>
+
                     <div id="image"></div>
-                        <div id="image-cap" class="caption caption-map"></div>
+                    <div id="image-cap" class="caption caption-map"></div>
                     <div id="quote"></div>
                     <div id="text-desc"></div>
                     <div id="real-world-desc"></div>
                     <div id="find-book"></div>
                     <div id="quote-cit"></div>
                     <div id="auth-bio"></div>
-                    <!-- <div id="link"></div> -->
+                    <!-- End Side Info -->
                 </div>
             </div>
         </div>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
         <!-- include cartodb.js library -->
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js"></script>
-    <script>
-        var map;
-        var sql;
-        var sql_query;
-        var markerNum = 0;
-        var upperbound = 84; //For now manually set to highest active cartodb_id
-        var sublayer;
-        
-      function placeMap() {
-	// Create map
-	cartodb.createVis('map', 'https://booma.cartodb.com/api/v2/viz/7f87d4f0-ba51-11e4-96b0-0e0c41326911/viz.json')
-		
-	  .done(function(vis, layers) {
-		// Allow the user to interact with the data layer
-		// (Layer 0 is the base layer, Layer 1 is the data layer)
-		layers[1].setInteraction(true);
-                    
-		// When a point is clicked...
-		layers[1].on('featureClick', function(e, latlng, pos, data, layerNumber) {
-			// Information about the point is shown on the console
-			cartodb.log.log(e, latlng, pos, data, layerNumber);
-			
-			// The ID of the object is stored in the variable-markerNum
-			markerNum = data.booma_id;
-			
-			// It displays the ID of the object in the console
-			console.log(data.booma_id);
-			   
-            displayInfo();
-	  });
-          
-        
-        // Set initial map view        
-        map = vis.getNativeMap();
-        map.setZoom(2);
-        
-        //var sublayer = layers[1].getSubLayer(0);
-        //sublayer.setCartoCSS("#daily_spots[cartodb_id=1] {marker-fill: black;}");
-            
-  });
-       
-}
-
-window.onload = placeMap();
-        
-//loads map to location of hash mark
-window.onload = setTimeout(function(){loadHash(window.location.hash.substring(1)); }, 900);
-        
-function loadHash() {
-    if (window.location.hash.substring(1) >= 1) {
-        markerNum = parseInt(window.location.hash.substring(1));
-        callMarker(markerNum); 
-    }
-}
-
-// Opens marker from sidebar link
-function callMarker() {
-    displayInfo(markerNum); 
-}
-
-function displayInfo() {
-    sql = new cartodb.SQL({ user: 'booma' });
-	sql_query = "SELECT * FROM daily_spots WHERE booma_id = " + markerNum;
-	sql.execute(sql_query)
-	.done(function(data) {
-		console.log(data.rows[0]);
-        
-        window.location.hash = markerNum;
-        
-        // Zooms to location when clicked
-        var lat = data.rows[0].latitude;
-        var long = data.rows[0].longitude;
-        var zoomHeight = data.rows[0].zoom_height;
-        map.panTo([lat, long]);
-        setTimeout(function(){map.setZoom(zoomHeight); }, 900);
-        
-        var title = data.rows[0].title;
-        var pub_date = data.rows[0].date;
-        var auth_name = data.rows[0].auth_name;
-		var image = data.rows[0].image;
-        var image_cap = data.rows[0].image_cap;
-        var quote = data.rows[0].quote;
-        var text_desc = data.rows[0].text_desc;
-        var real_world_desc = data.rows[0].real_world_desc;
-        var book_amazon_cover = data.rows[0].book_amazon_cover;
-        var book_amazon = data.rows[0].book_amazon;
-        var book_worldcat = data.rows[0].book_worldcat;
-        var quote_cit = data.rows[0].quote_cit;
-        var auth_bio = data.rows[0].auth_bio;
-        var link = data.rows[0].link;
-		
-		// Displays the ID of the object in the external information box
-		document.getElementById("post-header-img").innerHTML= book_amazon_cover;
-        document.getElementById("title").innerHTML= title;
-        document.getElementById("pub-date").innerHTML= pub_date;
-        document.getElementById("auth-name").innerHTML= auth_name;
-        document.getElementById("book_amazon").innerHTML="( <a href=" + book_amazon + " target='_blank'>Amazon</a> | ";
-        document.getElementById("book_worldcat").innerHTML="<a href=" + book_worldcat + " target='_blank'>Library</a> )";
-        document.getElementById("image").innerHTML= "<img src=" + image + " width=100%>";
-        document.getElementById("image-cap").innerHTML= image_cap; //change to caption
-        document.getElementById("quote").innerHTML= quote;
-        document.getElementById("text-desc").innerHTML= text_desc;
-        document.getElementById("real-world-desc").innerHTML= real_world_desc;
-        document.getElementById("quote-cit").innerHTML= quote_cit;
-        document.getElementById("auth-bio").innerHTML= auth_bio;
-        document.getElementById("link").innerHTML= "<p><a href=" + link + " target='_blank'>Read the article</a>";
-        
-        
-        //changeMarker(); //Test to call a function here.  Function call works, but have not been able to make it change the marker.
-    })
-    
-    .error(function(errors) {
-    	//***errors contains a list of errors
-    	console.log("errors:" + errors);
-	})
-}
-
- //function changeMarker() {
-   // alert("Hi " + markerNum); 
- //}
-
-function goToStart () {
-    markerNum = 0;
-    callMarker();
-}
-
-function goToPrevious () {
-    markerNum = (markerNum - 1 + upperbound) % upperbound;
-    callMarker();
-}
-
-function goToRandom () {
-    markerNum = Math.floor(Math.random() * upperbound) + 1;
-    callMarker();
-}
-
-function goToNext () {
-    markerNum = (markerNum + 1 + upperbound) % upperbound;
-    callMarker();
-}
-
-function goToEnd () {
-    markerNum = upperbound - 1;
-    callMarker();
-}
-               
-        </script>
+        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js" type="text/javascript"></script>
+        <script src="../js/booma.js" type="text/javascript"></script>
     </body>
 </html>
