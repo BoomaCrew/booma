@@ -47,6 +47,14 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-sm-4 pull-left stacked-bottom">
+                <div id="marker-nav">
+                        <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='callMarker(markerNum = 0);' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='callMarker(markerNum = (markerNum - 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
+                        <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='callMarker(markerNum = Math.floor(Math.random() * upperbound) + 1);'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='callMarker(markerNum = (markerNum + 1 + upperbound) % upperbound);' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+                        <a class="btn btn-primary btn-lg btn-nav" href="#" onClick='callMarker(markerNum = upperbound - 1);' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
+                    </div>
+                    <!--
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
@@ -64,13 +72,8 @@
       </div>
     </div>
   </div>
-                    <div id="marker-nav">
-                        <a class="btn btn-primary btn-sm" href="#" onClick='goToStart()' role="button"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='goToPrevious()' role="button"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a> 
-                        <a class="btn btn-primary btn-sm" href="#" onClick='goToRandom()'role="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='goToNext()' role="button"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
-                        <a class="btn btn-primary btn-sm" href="#" onClick='goToEnd()' role="button"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a>
-                    </div>
+  -->
+                   
                     <div id="post-header">
                         <div id="post-header-img"></div>
                         <div id="post-header-text">

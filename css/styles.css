@@ -36,15 +36,7 @@ body {
         font-weight: 600;
         color: darkorange;
 }
-#marker-nav {
-    text-align: center;
-    padding: .3em;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-top: 0;
-    border-radius: 4px;
-    width: 100%;
-}
+
 .panel-heading {
     text-align: center;
     width 100%;
@@ -65,11 +57,48 @@ body {
   background-color: #e6e6e6;
   border-color: #adadad;
 }
+/*trying something new*/
+.btn-primary, .btn-primary:visited, .btn-primary:focus {
+    color: #f26f1e;
+    background: none;
+    border: 2px solid #f26f1e;
+}
+.btn-nav {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    text-align: center;
+    border-radius: 50%;
+}
+.btn-primary:hover {
+    background: #f26f1e;
+    border: 2px solid #f26f1e;
+    color: white;
+}
+.btn-primary:active {
+    background: black;
+    border: 2px solid black;
+    color: white;
+}
+#marker-nav {
+    text-align: center;
+    padding-bottom: 1em;
+    background-color: none;
+    border: 0;
+    border-top: 0;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+/*end here*/
+
 p {
     color: #545454;
 }
 #post-header {
-    position :relative;
+    position: relative;
     width: 100%;
     margin: 0px auto;
     height: 170px;
@@ -131,21 +160,20 @@ p {
     color: #f26f1e;
     font-weight: bold;
 }
-    
+ 
 @media (max-width: 768px) and (min-width: 320px) {
     .stacked-top {
         height: 35%;
         width: 108%;
-        overflow: hidden;
-        position: fixed;
-        top: 50px;
-        z-index: 1;
         margin-left: -4%;
+        position: absolute;
+        top: 50px;
+        
   }
     .stacked-bottom {
         position: relative;
-        top: 37%;
-        overflow: scroll;
+        top: 39%;
+        overflow: visible;
         width: 100%;
   }
 }
