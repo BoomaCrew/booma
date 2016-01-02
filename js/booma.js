@@ -2,7 +2,7 @@ var map;
 var sql;
 var sql_query;
 var markerNum = 0;
-var upperbound = 84; //For now manually set to highest active cartodb_id
+var upperbound = 85; //For now manually set to highest active cartodb_id
 var sublayer;
 
 function placeMap() {
