@@ -79,7 +79,7 @@ function displayInfo() {
         // TODO: Simplify this section with a templating engine.
         document.getElementById("post-header-img").innerHTML = record.book_amazon_cover;
         document.getElementById("title").innerHTML = record.title;
-        document.getElementById("pub-date").innerHTML = record.pub_date;
+        document.getElementById("pub-date").innerHTML = record.date;
         document.getElementById("auth-name").innerHTML = record.auth_name;
         document.getElementById("book_amazon").innerHTML = "( <a href=\"" + record.book_amazon + "\" target=\"_blank\">Amazon</a> | ";
         document.getElementById("book_worldcat").innerHTML = "<a href=\"" + record.book_worldcat + "\" target=\"_blank\">Library</a> )";
