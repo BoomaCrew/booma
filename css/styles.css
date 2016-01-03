@@ -9,7 +9,8 @@ html, body, .container-fluid, .row, .col-sm-9, .stacked-top, .stacked-bottom  {
     line-height: 20px;
 }
 body { 
-    padding-top: 50px; 
+    padding-top: 50px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 #map {
         height: 100%;
