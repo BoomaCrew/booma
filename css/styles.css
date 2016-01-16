@@ -93,6 +93,19 @@ body {
 p {
     color: #545454;
 }
+.footer-rel {
+    position: relative;
+    background-color: #13427F;
+    padding: .5em 0;
+}
+.footer-rel p {
+    color: gainsboro;
+    font-weight: 400;
+    
+}
+.right-sider {
+    text-align: right;
+}
 #post-header {
     position: relative;
     width: 100%;
