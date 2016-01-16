@@ -57,7 +57,6 @@ body {
   background-color: #e6e6e6;
   border-color: #adadad;
 }
-/*trying something new*/
 .btn-primary, .btn-primary:visited, .btn-primary:focus {
     color: #f26f1e;
     background: none;
@@ -91,9 +90,6 @@ body {
     border-bottom: 1px solid black;
     width: 100%;
 }
-
-/*end here*/
-
 p {
     color: #545454;
 }
