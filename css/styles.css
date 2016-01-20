@@ -108,8 +108,9 @@ p {
 }
 .footer-rel p {
     color: gainsboro;
-    font-weight: 400;
-    
+}
+.footer-rel a {
+    color: #f26f1e;
 }
 .right-sider {
     text-align: right;
