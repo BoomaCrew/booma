@@ -93,10 +93,18 @@ body {
 p {
     color: #545454;
 }
+.mid-row-about {
+    border-width: 0 2px 0 2px;
+    border-color: black;
+    border-style: solid;
+}
 .footer-rel {
     position: relative;
     background-color: #13427F;
     padding: .5em 0;
+    text-align: center;
+    font-size: 1.1em;
+    
 }
 .footer-rel p {
     color: gainsboro;
@@ -165,6 +173,9 @@ p {
     background-color: lightgrey;
     margin-top: 1%;
 }
+.hr-div {
+    border-top: 2px solid black;
+}
 .booma-orange {
     color: #f26f1e;
     font-weight: bold;
@@ -188,4 +199,10 @@ p {
         overflow: visible;
         width: 100%;
   }
+
+    .mid-row-about {
+        border-width: 2px 0 2px 0;
+        border-color: black;
+        border-style: solid;
+    }
 }
