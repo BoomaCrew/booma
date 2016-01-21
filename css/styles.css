@@ -94,23 +94,23 @@ p {
     color: #545454;
 }
 .mid-row-about {
-    border-width: 0 2px 0 2px;
-    border-color: black;
+    border-width: 0 1px 0 1px;
+    border-color: #545454;
     border-style: solid;
 }
 .footer-rel {
     position: relative;
-    background-color: #13427F;
+    background-color: #8ea0a9;
     padding: .5em 0;
     text-align: center;
     font-size: 1.1em;
     
 }
 .footer-rel p {
-    color: gainsboro;
+    color: white;
 }
 .footer-rel a {
-    color: #f26f1e;
+    color: #545454;
 }
 .right-sider {
     text-align: right;
@@ -148,7 +148,7 @@ p {
     font-style: italic;
 }
 .proj-well {
-    background-color: lightgrey;
+    background-color: #eee8e5;
     margin-top: 1%;
 }
 .panel-heading-proj {
@@ -171,11 +171,11 @@ p {
 }
 
 .about-well {
-    background-color: lightgrey;
+    background-color: #eee8e5;
     margin-top: 1%;
 }
 .hr-div {
-    border-top: 2px solid black;
+    border-top: 1px solid #545454;
 }
 .booma-orange {
     color: #f26f1e;
@@ -185,6 +185,14 @@ p {
     text-align: right;
 }
  
+@media (max-width: 992px) and (min-width: 320px) {
+.mid-row-about {
+        border-width: 1px 0 1px 0;
+        border-color: #545454;
+        border-style: solid;
+    }
+}
+
 @media (max-width: 768px) and (min-width: 320px) {
     .stacked-top {
         height: 35%;
@@ -201,9 +209,5 @@ p {
         width: 100%;
   }
 
-    .mid-row-about {
-        border-width: 2px 0 2px 0;
-        border-color: black;
-        border-style: solid;
-    }
+    
 }
