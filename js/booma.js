@@ -5,9 +5,10 @@ var markerNum = 0;
 var upperbound = 85; //For now manually set to highest active cartodb_id
 var sublayer;
 
+
 function placeMap() {
     // Create map
-    cartodb.createVis('map', 'https://booma.cartodb.com/api/v2/viz/7f87d4f0-ba51-11e4-96b0-0e0c41326911/viz.json')
+    cartodb.createVis('map', map_id) //map_id should be included on page where it will be displayed
         
       .done(function(vis, layers) {
         // Allow the user to interact with the data layer
