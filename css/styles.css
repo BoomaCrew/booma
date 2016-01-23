@@ -110,7 +110,8 @@ p {
     color: white;
 }
 .footer-rel a {
-    color: #545454;
+    color: white;
+    text-decoration: underline;
 }
 .right-sider {
     text-align: right;
