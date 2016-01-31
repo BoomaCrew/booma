@@ -5,7 +5,7 @@ html, body, .container-fluid, .row, .col-sm-9, .stacked-top, .stacked-bottom  {
 body { 
     padding-top: 50px;
 }
-p {
+p, ol, ul {
     color: #545454;
 }
 .btn-primary, .btn-primary:visited, .btn-primary:focus {
