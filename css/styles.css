@@ -5,7 +5,7 @@ html, body, .container-fluid, .row, .col-sm-9, .stacked-top, .stacked-bottom  {
 body { 
     padding-top: 50px;
 }
-p, ol, ul {
+p, ol, ul, h4 {
     color: #545454;
 }
 .btn-primary, .btn-primary:visited, .btn-primary:focus {
@@ -99,6 +99,10 @@ p, ol, ul {
     text-align: center;
     border-radius: 50%;
 }
+.btn-spacer {
+    width: 20px;
+    display: inline-block;
+}
 #marker-nav {
     text-align: center;
     padding-bottom: 1em;
@@ -182,6 +186,10 @@ p, ol, ul {
     border-color: #337ab7;
     color: white;
 }
+.panel-default>.panel-heading {
+    background-color: #eee8e5;
+    
+}
 
 /*footer styling*/
 .footer-rel {
@@ -198,6 +206,11 @@ p, ol, ul {
 .footer-rel a {
     color: white;
     text-decoration: underline;
+}
+
+/*individual project page styling*/
+.toc-list a {
+    color: #545454;
 }
 
 
