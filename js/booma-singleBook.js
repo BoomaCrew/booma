@@ -122,7 +122,7 @@ function goToEnd () {
     callMarker();
 }
 
-function goTo(MN) {
-    markerNum = MN;
+function goTo(mn) {
+    markerNum = mn;
     callMarker();
 }
