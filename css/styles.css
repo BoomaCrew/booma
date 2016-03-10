@@ -213,6 +213,14 @@ p, ol, ul, h4 {
     color: #545454;
 }
 
+/*social bar alignment*/
+.twitter-share-button {
+    vertical-align: -5px !important;
+}
+
+.social-bar iframe {
+    vertical-align: -7px;
+}
 
 /*md or sm*/ 
 @media (max-width: 992px) and (min-width: 320px) {
