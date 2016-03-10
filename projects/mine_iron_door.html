@@ -17,7 +17,17 @@
         
     </head>
     <body>
-
+        <!-- For FB Buttons -->
+        <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        
+        
         <!-- Begin Header Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -50,7 +60,6 @@
             </div>
         </nav>
         <!-- End Header Navigation -->
-        <a id="refresh" class="btn btn-refresh" href="#" onClick="map.setZoom(2)" role="button"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
         
         <div class="container-fluid">
             <div class="row">
@@ -133,20 +142,34 @@
                 <br>
                     
                 <!--Begin content-->
-                    <div id="image"></div>
-                    <div id="image-cap" class="caption caption-map"></div>
+                    <div id="image"><img src="../images/projects/mine_iron_door/cdo_trail.jpg" width="100%"></div>
+                    <div id="image-cap" class="caption caption-map">Trail through the Canyon del Oro with the Reef of Rocks in the distance.</div>
                     <div><h4 id="name">Overview</h4></div>
                     <div id="text-desc">
-                        <p>The story on Harold Bell Wright's  <em>The Mine with the Iron Door</em> (1923) takes place almost entirely in the Santa Catalina Mountains to the north of Tucson, an area that Wright became familiar with during his visit to the area in 1915 and his subsequent residence in and just outside Tucson.</p>
-                        <p>While the story focuses on the adventures of a couple old miners who scratch out a living in the mountains while jointly raising Marta Hillgrove into a strong, young woman, the book also serves as a time capsule with fleeting glimpses of the city and surrounding mountains and desert as they were in the early 20th century.</p>
-                        <p>The book is just one part of Wright's legacy in Tucson, however.  As the first American author to sell a million copies of a book and earn a million dollars from writing, he had considerable influence on the desert town he briefly made his home, and as evidenced by his dedication in <em>The Mine with the Iron Door</em>--"To My friends in the Old Pueblo Tucson"--the town left an impression on him as well.</p>
+                        <p>The story in Harold Bell Wright's  <em>The Mine with the Iron Door</em> (1923) takes place almost entirely within the Santa Catalina Mountains to the north of Tucson, an area that Wright became familiar with during his visit to the area in 1915 and his subsequent residence in and just outside of Tucson.</p>
+                        <p>While the story focuses on the adventures of a couple old miners who scratch out a living in the mountains while jointly raising their adopted daughter Marta Hillgrove into a strong, young woman, the book also serves as a time capsule with fleeting glimpses of the city and surrounding mountains and desert as they were in the early 20th century.</p>
+                        <p>The novel is just one part of Wright's legacy in Tucson, however.  As the first American author to sell a million copies of a book and earn a million dollars from his writing, he had considerable influence on the desert town he briefly made his home, and as evidenced by his dedication in <em>The Mine with the Iron Door</em>--"To My friends in the Old Pueblo Tucson"--the town left an impression on him as well.</p>
                         <p>To learn more about the locations that appear in the book, use the navigation buttons above, click the markers on the map, or select locations from the table of contents.</p>
-                        <p>The locations for this book are divided into three groups. The primary locations, which for this book only include two locations, are where significant events from the story take place.  Secondary locations are places that are mentioned but do not include significant action. "The Chase" refers to a multiple chapter section near the end of the book where several of the main characters must travel across the desert.</p>
+                        <p>The locations for this book are divided into three groups. The primary locations, which here only include two locations, are where significant events from the story take place.  Secondary locations are places that are mentioned but do not include significant action. "The Chase" refers to primary events that are part of a multiple chapter section near the end of the narrative where several of the main characters travel across the desert.</p>
                         <p>If you have questions, comments, or corrections, please send them to <a href="mailto:booma+mine_iron_door@booma.us">booma+mine_iron_door@booma.us</a>.</p>
+                        <p><em>Created by David Herring.</em></p>
                         <p><em>This project was originally published in March 2016.</em></p>
                     </div>
                     <div id="real-world-desc"></div>
                     <div id="links"></div>
+                    
+                    <!-- Begin Social Sharing -->
+                    
+                    <div class="social-bar">
+                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+                    
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    
+                        <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+                        
+                    </div>
+                    
                     <!-- End Side Info -->
                 
                 <!--Begin footer here-->
