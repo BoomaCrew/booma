@@ -83,6 +83,9 @@ function displayInfo() {
         if (record.image_main != null) {
         document.getElementById("image").innerHTML = "<img src=\"" + record.image_main + "\" width=\"100%\">";
         }
+        else {
+           document.getElementById("image").innerHTML = "";
+        }
         document.getElementById("image-cap").innerHTML = record.image_cap; // change to caption
         document.getElementById("name").innerHTML = record.name;
         document.getElementById("text-desc").innerHTML = record.desc_text;
