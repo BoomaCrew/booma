@@ -15,9 +15,26 @@
         <link rel="stylesheet" type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" />
         
+    <meta property="fb:app_id" content="547388018759694" /> 
+            <meta property="og:url" content="http://booma.us/beta/projects/daily_spots.html" />
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content="Booma | Daily Spots" />
+            <meta property="og:description" content="Bookmap: Locations from literature, poetry, and nonfiction" />
+            <meta property="og:image" content="http://booma.us/beta/images/BoomaLogoOrange300.png" />
+            
     </head>
     <body>
-
+        <!-- For FB Buttons -->
+        <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=547388018759694";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script> 
+        
+        
         <!-- Begin Header Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -107,6 +124,21 @@
                     <div id="find-book"></div>
                     <div id="quote-cit"></div>
                     <div id="auth-bio"></div>
+                    
+                    <!-- Begin Social Sharing -->
+                    
+                    <div class="social-bar">
+                    <div class="fb-like" data-href="http://booma.us/beta/projects/daily_spots.html" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+                    
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    
+                        <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+                        
+                    </div>
+                    
+                    <div class="fb-page" data-href="https://www.facebook.com/BoomaCrew/" data-tabs="timeline" data-width="225" data-height="70" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/BoomaCrew/"><a href="https://www.facebook.com/BoomaCrew/">Booma</a></blockquote></div></div>
+                    
                     <!-- End Side Info -->
                 
                 <!--Begin footer here-->
