@@ -214,6 +214,10 @@ p, ol, ul, h4 {
 }
 
 /*social bar alignment*/
+.social-bar {
+    height: 20;
+    overflow: hidden;
+}
 .twitter-share-button {
     vertical-align: -5px !important;
 }
