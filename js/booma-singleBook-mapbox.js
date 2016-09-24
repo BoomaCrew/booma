@@ -35,7 +35,7 @@
         function displayInfo(e) {
             // Use queryRenderedFeatures to get features at a click event's point
             // Use layer option to avoid getting results from other layers
-            var features = map.queryRenderedFeatures(e.point, { layers: ['points'] });
+            var features = map.queryRenderedFeatures(e.point, { layers: ['url'] });
             // if there are features within the given radius of the click event,
             // fly to the location of the click event
             if (features.length) {
@@ -80,7 +80,7 @@
         
 
         function hoverAction(e) {
-            var features = map.queryRenderedFeatures(e.point, { layers: ['points'] });
+            var features = map.queryRenderedFeatures(e.point, { layers: ['url'] });
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
