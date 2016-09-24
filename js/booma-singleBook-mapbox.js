@@ -259,9 +259,9 @@
 
 //THE DATA
 
-    var url = 'http://booma.us/beta/geojson/inferno.geojson';
+    var points = 'http://booma.us/beta/geojson/inferno.geojson';
     //The GeoJSON DATA
-    var points = 
+ /*   var points = 
         {
         "type": "FeatureCollection",
             "features": [{
