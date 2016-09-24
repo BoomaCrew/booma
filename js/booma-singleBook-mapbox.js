@@ -259,7 +259,7 @@
 
 //THE DATA
 
-    var url = '../geojson/inferno.geojson';
+    var url = 'http://booma.us/beta/geojson/inferno.geojson';
     //The GeoJSON DATA
     var points = 
         {
