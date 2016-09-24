@@ -120,7 +120,7 @@
         //Adds source (must be combined with .addLayer below)    
         map.addSource("points", {
             "type": "geojson",
-            "data": points
+            "data": url
         });
         
         //Populate canto selector drop down menu
@@ -259,7 +259,7 @@
 
 //THE DATA
 
-    var url = '../geojson/points.geojson';
+    var url = '../geojson/inferno.geojson';
     //The GeoJSON DATA
     var points = 
         {
