@@ -1,0 +1,60 @@
+{
+        "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [11.2558, 43.7696]
+                },
+                "properties": {
+                    "title": "Florence",
+                     "icon": "circle",
+                     "zoom": 10,
+                     "canto": 1,
+                     "textDesc": "<p>The first reference to Dante's home city of Florence does not occur in the book until Circle Three where the two travelers encounter Ciacco among the Gluttons.  While there is no historical record of a Ciacco in Florence during the time of Dante, the character claims to the poets that he is from Dante's own divided city.</p><p>Following the tradition laid out in both Odysseus's trip to the Underworld in the <em>Odyssey</em> and Aeneas's in the <em>Aeneid</em>, the souls in Dante's Hell deliver prophecies.  Ciacco is the first character to do this in the <em>Inferno</em>, telling Dante about the political infighting among the Guelphs that, though not referenced here specifically, will lead to Dante's exile from his beloved Florence.</p>",
+                     "worldDesc": "<p>Florence is Fantastic"
+                 }
+             }, {
+                 "type": "Feature",
+                 "geometry": {
+                     "type": "Point",
+                     "coordinates": [12.2035, 44.4184]        
+                 },
+                 "properties": {
+                     "title": "Ravenna",
+                     "icon": "circle",
+                     "zoom": 14,
+                     "canto": 1,
+                     "textDesc": "<p>Among the Carnal in Circle Three, Francesca and her lover Paolo descend from the whirlwind that blows them around to share their story of lust with Dante.  Francesca introduces herself as being from the place where the Po River empties into the Adriatic Sea, a refrence to her birthplace Ravenna.</p>",
+                     "worldDesc": "<p>Ravenna is Ravishing!</p>"
+                 }
+             }, {
+                 "type": "Feature",
+                 "geometry": {
+                     "type": "Point",
+                     "coordinates": [15.9934, 38.7510],
+                 },
+                 "properties": {
+                     "title": "Mongibello2",
+                     "icon": "circle",
+                     "zoom": 6,
+                     "canto": 4,
+                     "textDesc": "<p>The first sinner Dante and Virgil encounter among the Violent Against God in the Third Round of Circle Seven is Campaneus, who was struck down by one of Jupiter's (or Zeus's) lightning bolts as he stormed the walls of Thebes.  While he his punished by laying on the burning plain of sand he still defies God, saying that all of the workers in Mongibello would have been worn out making lightening bolts before Jupiter would have earned any concessions from him.  Mongibello is an Italian name for Mount Etna, the volcanic peak on Sicily where, Vulcan kept his smithy.</p>",
+                     "worldDesc": "<p>Mongibello is another name for Mount Etna</p>"
+                 }
+             }, {
+                 "type": "Feature",
+                 "geometry": {
+                     "type": "Point",
+                     "coordinates": [14.9934, 37.7510],
+                 },
+                 "properties": {
+                     "title": "Mongibello",
+                     "icon": "circle",
+                     "zoom": 6,
+                     "canto": 2,
+                     "textDesc": "<p>The first sinner Dante and Virgil encounter among the Violent Against God in the Third Round of Circle Seven is Campaneus, who was struck down by one of Jupiter's (or Zeus's) lightning bolts as he stormed the walls of Thebes.  While he his punished by laying on the burning plain of sand he still defies God, saying that all of the workers in Mongibello would have been worn out making lightening bolts before Jupiter would have earned any concessions from him.  Mongibello is an Italian name for Mount Etna, the volcanic peak on Sicily where, Vulcan kept his smithy.</p>",
+                     "worldDesc": "<p>Mongibello is another name for Mount Etna</p>"
+                 }
+            }]
+    }

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!--Basic page meta information-->
+        <meta charset="utf-8">
+        <meta name="description" content="Dante's Inferno: A comprehensive bookmap for Dante Alighieri's Inferno.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Booma | Dante's Inferno Tour</title>
+        
+            
+        <!--Icons for saving bookmark on mobile device-->
+        <link rel="icon" type="image/x-generic" href="../favicon.ico" />
+        <link href="http://booma.us/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="http://booma.us/icon-hires.png" rel="icon" sizes="192x192" />
+        <link href="http://booma.us/icon-normal.png" rel="icon" sizes="128x128" />
+          
+            
+        <!--CSS links-->
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/styles.css">
+        
+        
+            
+        <!--Default content for FB sharing-->
+        <meta property="fb:app_id" content="547388018759694" /> 
+        <meta property="og:url" content="http://booma.us/beta/projects/dantes_inferno_tour.html" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Booma | Dante's Inferno Tour" />
+        <meta property="og:description" content="Bookmap: Dante's Inferno" />
+    <!--Change link below-->
+        <meta property="og:image" content="http://booma.us/beta/images/projects/mine_iron_door/cdo_trail.jpg" />
+            
+            
+        <!--Add links for Mapbox API and CSS-->
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
+            
+        <style>
+            .mapboxgl-popup-content {padding: .2em 1em}
+        </style>
+    
+    </head>
+        
+    <body style="background-color: #eee8e5">
+        
+        <!-- Script for FB buttons; button placed below -->
+        <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=547388018759694";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script> 
+        
+        
+        <!-- Script for Twitter buttons, button placed below -->
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>    
+        
+        
+        <!--Begin Header Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">     
+                    <a href="../../index.php" class="navbar-brand">
+                        <img class="headerLogo" src="../images/logoHeaderWhite40.png" onMouseover="src='../images/logoHeaderOrange40.png'" onMouseout="src='../images/logoHeaderWhite40.png'" onClick="src='../images/logoHeaderOrange40.png'">
+                    </a>
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../../index.php">home</a></li>
+                        <li class="active"><a href="../projects.html">projects</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">engage <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/BoomaCrew/booma">github</a></li>
+                                <li><a href="https://www.patreon.com/Booma">patreon</a></li>
+                                <li><a href="https://www.facebook.com/BoomaCrew">facebook</a></li>
+                                <li><a href="https://twitter.com/boomacrew">twitter</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html">about</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Header Navigation -->
+        
+        
+        <!--Begin Main Content Area-->
+        <div class="container-fluid">
+            <div class="row" style="background-color: #fff">              
+
+                <!--Begin Map Container-->
+                <div class="col-sm-8 pull-right stacked-top">
+                    <div id="map"></div>
+                </div>
+                <!--End Map Container-->
+
+
+                <!--Begin Text Container-->
+                <div class="col-sm-4 pull-left stacked-bottom"  style="background-color: #eee8e5">
+                    <h3>Dante's <em>Inferno</em></h3>
+
+
+                <!--Project navbar button-->
+                <div class="project-navbar" style="background-color: white; padding: .3em; border-radius: .2em; text-align: left; box-shadow: 0 1px 2px rgba(0,0,0,0.10); padding: .5em 1.33em;">
+                    
+                    <strong>Canto</strong> 
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="cantoSel" style="padding-top: 0; padding-bottom: 0">All <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" id="cantoSelDD">
+                            <li><a href="#" onClick='displayCanto(-1)'>All</a></li>
+                        </ul>
+                    </div>
+                    
+                    <a class="btn btn-default btn-md pull-right" href="#" style="padding-top: 0; padding-bottom: 0">OV</a>
+                    <a class="btn btn-default btn-md pull-right" onClick='mapRefresh()' style="padding-top: 0; padding-bottom: 0; margin: 0 .25em 0 0">RF</a>
+                    
+                    
+                   
+                </div>
+                
+                <br>        
+                        
+                <!-- Begin table of contents -->
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color: white">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Table of Contents <b class="caret"></b></a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div id="mapContents" class="panel-body toc-list"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!--Begin content display area-->            
+                <div style="background-color: white; padding: .5em 1.33em; border-radius: .2em; box-shadow: 0 1px 2px rgba(0,0,0,0.10)">
+                    <div id="title"></div>
+                    <div id="loc-images"></div>
+                    <div id="text-desc"><em style="color: grey">Select a location from the map or from the Table of Contents above.</em></div>
+                    <div id="world-desc"></div>
+                    <div id="footnotes"></div>
+                    <div id="links"></div>
+                </div>
+     
+                <br>    
+                <!--Begin social area-->
+                
+                <!--Social sharing bar-->
+                <div class="social-bar" style="background-color: white; padding: .5em 1.33em; border-radius: .2em; box-shadow: 0 1px 2px rgba(0,0,0,0.10)">
+
+                    <div>
+                    <div class="fb-like" data-href="http://booma.us/beta/projects/dantes_inferno_tour.html" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+
+                    <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+
+                        </div>
+                    <br>
+
+                <!--Facebook banner-->    
+                <div class="fb-page" data-href="https://www.facebook.com/BoomaCrew/" data-tabs="timeline" data-width="500" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/BoomaCrew/"><a href="https://www.facebook.com/BoomaCrew/">Booma: The Bookmapping Project</a></blockquote></div></div>
+                    
+                </div>
+
+                <!-- Facebook Comments -->
+                <div class="fb-comments" data-href="http://booma.us/beta/projects/dantes_inferno_tour.html" data-width="100%" data-numposts="5"></div>
+
+                <!-- End sidebar main content area -->
+
+                    
+                    
+                <!--Begin footer still within sidebar-->
+                <br>
+                <nav class="navbar navbar-default navbar-fixed-bottom footer-rel" style="border-radius: .2em; box-shadow: 0 1px 2px rgba(0,0,0,0.10)">
+
+                    <p><a href="https://github.com/BoomaCrew/booma">GitHub</a> | <a href="https://www.patreon.com/Booma">Patreon</a> | <a href="https://www.facebook.com/BoomaCrew/">Facebook</a> | <a href="https://twitter.com/boomacrew">Twitter</a> | <a href="mailto:booma@booma.us">Contact</a></p>
+
+                    <p><a href="../info/terms.html">Terms and Conditions</a> | <a href="../info/privacy.html">Privacy Policy</a></p>
+
+                    <p>Booma, LLC - All Rights Reserved &#169; Copyright <script>document.write(new Date().getFullYear())</script></p>    
+                  
+                </nav>
+    
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+        <!--Script area--> 
+        <!--Javascript Links-->
+        <script src="../js/booma-singleBook-mapbox.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        
+             
+        <!--Analytics-->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-73416665-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+            
+    </body>
+        
+</html>
