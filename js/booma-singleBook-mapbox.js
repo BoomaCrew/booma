@@ -26,7 +26,7 @@
         //Adds source (must be combined with .addLayer below)    
         map.addSource("points", {
             "type": "geojson",
-            "data": points
+            "data": url
         });
         
       //Adds source (.addLayer must be combined with .addSource above)
